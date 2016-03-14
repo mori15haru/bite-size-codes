@@ -26,7 +26,7 @@ end
 RSpec.describe do
   let(:array) { [2,4,5,6,8,10,11,20] }
   let(:sum) { 16 }
-  
+
   context 'no such a pair' do
     let(:array) { [3,4,9,100] }
 
