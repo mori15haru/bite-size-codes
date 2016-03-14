@@ -1,9 +1,9 @@
-# Find the majority element given a list of n elements
+# Find the majority element given an array of n elements
 #
 # majority element := the element that appears more 
-# than n/2 times given
+# than n/2 times
 # 
-# Time O(n), Space O(1)
+# Time O(n),Space O(1)
 
 def majority(list)
   flags = {
@@ -30,7 +30,7 @@ end
 
 RSpec.describe'#majority' do
   context 'there is a majority element' do
-    let(:list) { [1, 3, 4, 5, 4, 4, 2, 4, 4, 1, 4] }
+    let(:list) { [1,3,4,5,4,4,2,4,4,1,4] }
    
     it 'returns the majority element' do
       expect(majority(list)).to eq(4) 
@@ -38,11 +38,10 @@ RSpec.describe'#majority' do
   end
 
   context 'there is no majority element' do
-    let(:list) { [1, 2, 3, 4, 4, 4] }
+    let(:list) { [1,2,3,4,4,4] }
     
     it 'returns nil' do
       expect(majority(list)).to be_nil
     end
   end
-
 end
