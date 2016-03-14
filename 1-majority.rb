@@ -44,4 +44,5 @@ RSpec.describe'#majority' do
       expect(majority(list)).to be_nil
     end
   end
+
 end
