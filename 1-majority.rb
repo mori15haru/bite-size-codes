@@ -31,7 +31,7 @@ end
 RSpec.describe'#majority' do
   context 'there is a majority element' do
     let(:list) { [1,3,4,5,4,4,2,4,4,1,4] }
-
+    
     it 'returns the majority element' do
       expect(majority(list)).to eq(4)
     end
@@ -39,10 +39,9 @@ RSpec.describe'#majority' do
 
   context 'there is no majority element' do
     let(:list) { [1,2,3,4,4,4] }
-
+    
     it 'returns nil' do
       expect(majority(list)).to be_nil
     end
   end
-
 end
