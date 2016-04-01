@@ -1,5 +1,5 @@
 # Find duplicates given an array of n elements
-# which contains elements from 0 to n-1
+# in the range from 0 to n-1
 #
 # Time O(n),Space O(1)
 
