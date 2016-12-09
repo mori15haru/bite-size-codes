@@ -3,24 +3,26 @@
 #
 # Time O(n)
 
-def find_pair(array, k)
-  flags = {
-    left: 0,
-    right: array.length-1
-  }
+def find_pair(pair, array, k)
+  left, right = pair
 
-  while(flags[:left] < flags[:right]) do
-    small = array[flags[:left]]
-    big   = array[flags[:right]]
-    sum   = small + big
-    if sum == k
-      return [small, big]
-    elsif sum > k
-      flags[:right] -= 1
-    else
-      flags[:left] += 1
-    end
+  if left >= right
+    return nil
   end
+
+  small = array[left]
+  big   = array[right]
+  sum   = small + big
+
+  if sum == k
+    return [small, big]
+  elsif sum > k
+    right -= 1
+  else
+    left += 1
+  end
+
+  find_pair([left, right], array, k)
 end
 
 RSpec.describe do
@@ -31,11 +33,11 @@ RSpec.describe do
     let(:array) { [3,4,9,100] }
 
     it 'returns nil' do
-      expect(find_pair(array, sum)).to be_nil
+      expect(find_pair([0, array.length-1], array, sum)).to be_nil
     end
   end
 
   it 'returns the pair' do
-    expect(find_pair(array, sum)).to eq([5,11])
+    expect(find_pair([0, array.length-1], array, sum)).to eq([5,11])
   end
 end

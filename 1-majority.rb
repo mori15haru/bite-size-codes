@@ -5,31 +5,36 @@
 #
 # Time O(n),Space O(1)
 
-def majority(list)
+def get_cand(flags, list)
   head, *tail = list
 
-  flags = {
-    candidate: head,
-    count: 1
-  }
+  if head.nil?
+    return flags[:candidate]
+  end
 
-  tail.each do |e|
-    if flags[:candidate] == e
-      flags[:count] += 1
+  if flags[:candidate] == head
+    flags[:count] += 1
+  else
+    if flags[:count] == 1
+      flags[:candidate] = head
     else
-      if flags[:count] == 1
-        flags[:candidate] = e
-      else
-        flags[:count] -= 1
-      end
+      flags[:count] -= 1
     end
   end
 
-  if list.count(flags[:candidate]) > list.length/2
-    flags[:candidate]
-  else
-    nil
-  end
+  get_cand(flags, tail)
+end
+
+def majority(list)
+  cand = get_cand(
+    {
+      candidate: list.first,
+      count: 1
+    },
+    list
+  )
+
+  list.count(cand) > list.length/2 && cand
 end
 
 RSpec.describe '#majority' do
@@ -48,8 +53,8 @@ RSpec.describe '#majority' do
   context 'there is no majority element' do
     let(:list) { [1,2,3,4,4,4] }
 
-    it 'returns nil' do
-      expect(majority(list)).to be_nil
+    it 'returns false' do
+      expect(majority(list)).to be false
     end
   end
 end
