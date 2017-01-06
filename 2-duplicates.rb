@@ -1,7 +1,7 @@
 # Find duplicates given an array of n elements
 # in the range from 0 to n-1
 #
-# Time O(n),Space O(1)
+# Time O(n), Extra space O(1)
 
 def duplicates(dups, this_array, array)
   head, *tail = this_array

@@ -1,9 +1,9 @@
 # Find the majority element given an array of n elements
 #
-# majority element := the element that appears more
+# Majority element := the element that appears more
 # than n/2 times
 #
-# Time O(n),Space O(1)
+# Time O(n), Extra space O(1)
 
 def get_cand(flags, list)
   head, *tail = list
